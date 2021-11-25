@@ -1,4 +1,6 @@
 package com.example.demo.Section;
 
-public class SectionRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SectionRepository extends JpaRepository<Section,Long> {
 }
