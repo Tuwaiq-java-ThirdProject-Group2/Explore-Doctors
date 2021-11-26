@@ -4,18 +4,21 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "hospitals")
+@SequenceGenerator(name="HosSeq", initialValue=1, allocationSize=100)
 public class Hospital {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-private long hospitalId;
-private String name;
-private String email ;
-private int phone ;
-private String Address;
-private double langtiude;
-private double lattiude;
+     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HosSeq")
+    private Long hospitalId;
+    private String name;
+    private String email;
+    private int phone;
+    private String Address;
+    private double langtiude;
+    private double lattiude;
 
-public Hospital(){}
+    public Hospital() {
+    }
+
     public Hospital(long hospitalId, String name, String email, int phone, String address, double langtiude, double lattiude) {
         this.hospitalId = hospitalId;
         this.name = name;
