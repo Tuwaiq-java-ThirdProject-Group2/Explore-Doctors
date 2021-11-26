@@ -45,6 +45,7 @@ public class HospitalServies {
             hospital.setLangtiude(data.getLangtiude());
             hospital.setLattiude(data.getLattiude());
 
+
         }
     }
 }
