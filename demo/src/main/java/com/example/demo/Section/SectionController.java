@@ -15,7 +15,8 @@ public class SectionController {
     }
     @GetMapping
 
-    public List<Section> getSections() {
+    public List<Section> getSections()
+    {
         return sectionServies.getSections();
     }
 

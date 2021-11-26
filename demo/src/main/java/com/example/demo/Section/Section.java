@@ -10,6 +10,7 @@ public class Section {
     private long sectionId;
     private String name;
 
+
     public Section() {}
     public Section(long sectionId, String name) {
         this.sectionId = sectionId;

@@ -2,30 +2,28 @@ package com.example.demo.Evaluation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-
 @Service
 public class EvaluationServies {
-  private final EvaluationRepository evaluationRepository;
+    private final EvaluationRepository evaluationRepository;
 
-@Autowired
+    @Autowired
     public EvaluationServies(EvaluationRepository evaluationRepository) {
         this.evaluationRepository = evaluationRepository;
     }
 
     public List<Evaluation> getEvaluaitons() {
-    return evaluationRepository.findAll();
+        return evaluationRepository.findAll();
     }
 
     public Evaluation getEvaluaiton(String id) {
-    Long evaluation_id= Long.parseLong(id);
-    return evaluationRepository.findById(evaluation_id).orElse(null);
+        Long evaluation_id= Long.parseLong(id);
+        return evaluationRepository.findById(evaluation_id).orElse(null);
     }
 
     public Evaluation createEvaluation(Evaluation evaluation) {
-    return evaluationRepository.save( evaluation);
+        return evaluationRepository.save( evaluation);
     }
 
 
@@ -49,9 +47,3 @@ public class EvaluationServies {
         }
     }
 }
-
-
-
-
-
-
