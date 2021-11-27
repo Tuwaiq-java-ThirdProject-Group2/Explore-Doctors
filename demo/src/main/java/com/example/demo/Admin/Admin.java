@@ -1,58 +1,58 @@
 package com.example.demo.Admin;
 
+
+
+
+import com.example.demo.User.User;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
-@Table(name = "Admins")
+@Table(name = "Admin")
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long adminId;
-    private String user_name;
-    private String password;
+    private long AdminId;
+    private String userName;
+    private int password;
     private String role;
+    @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL,targetEntity = User.class)
+    Set User=new HashSet();
 
-    public Admin(Long adminId, String user_name, String password, String role) {
-        this.adminId = adminId;
-        this.user_name = user_name;
-        this.password = password;
-        this.role = role;
+
+    public long getAdminId() {
+        return AdminId;
     }
 
-    public Admin() {
+    public void setAdminId(long adminId) {
+        AdminId = adminId;
     }
 
-    public Long getId() {
-        return adminId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(Long adminId) {
-        this.adminId = adminId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getUsername() {
-        return user_name;
-    }
-
-    public void setUsername(String user_name) {
-        this.user_name = user_name;
-    }
-
-    public String getPassword() {
+    public int getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(int password) {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "adminId=" + adminId +
-                ", user_name='" + user_name + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+
     }
 }

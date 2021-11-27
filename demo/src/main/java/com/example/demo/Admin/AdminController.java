@@ -1,43 +1,96 @@
 package com.example.demo.Admin;
 
+
+import com.example.demo.Evaluation.Evaluation;
+import com.example.demo.Evaluation.EvaluationServies;
+import com.example.demo.Doctor.Doctor;
+import com.example.demo.Doctor.DoctorServies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/Admin")
+
+@RequestMapping(path = "admin")
 public class AdminController {
-    public final AdminService adminService;
+    private final AdminServies adminServies;
+    private EvaluationServies evaluationservices;
+    private DoctorServies doctorServies;
+    private Doctor doctor;
+    private Evaluation evaluation;
 
     @Autowired
-    public AdminController(AdminService adminService) {
-        this.adminService = adminService;
+    public AdminController(AdminServies adminServies) {
+        this.adminServies = adminServies;
     }
 
-    @PostMapping()
-    public Admin createAdmin(Admin a) {
-        return adminService.createAdmin(a);
-    }
-
-    @DeleteMapping("/{id}")
-    public Admin deleteAdmin(@PathVariable String id) {
-        return adminService.deleteAdmin(id);
-    }
-
-    @PutMapping()
-    public Admin updateAdmin(String id, Admin m) {
-        return adminService.updateAdmin(id, m);
+    @GetMapping
+    private List<Admin> getAdmins() {
+        return adminServies.getAdmins();
     }
 
     @GetMapping("/{id}")
     public Admin getAdmin(@PathVariable String id) {
-        return adminService.displayAdmin(id);
+        return adminServies.getAdmin(id);
+
     }
 
-    @GetMapping()
-    public List<Admin> getAllAdmin() {
-        return adminService.displayAllAdmin();
+    @PostMapping
+    public Admin createAdmin(@RequestBody Admin admin) {
+        return adminServies.createAdmin(admin);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteAdmin(@PathVariable String id) {
+        adminServies.deleteAdmin(id);
+
+    }
+
+    @PutMapping("/{id}")
+    public void updateAdmin(@PathVariable String id, @RequestBody Admin data) {
+        adminServies.updateAdmin(id, data);
+    }
+
+    @GetMapping("/{id_evaluation}/{Decision_comment}")
+    public void DecisionComment(@PathVariable String Decision_comment, @PathVariable String id_evaluation) {
+        if (Decision_comment=="true") {
+            evaluation = evaluationservices.getEvaluaiton(id_evaluation);
+            evaluation.setAproved(true);
+
+           doctorServies.getDoctor(String.valueOf(evaluation.getDoct().getDoctorId())).setTotal_rate(evaluation.getRate() + evaluation.getDoct().getTotal_rate());
+
+            evaluationservices.updateEvaluation(id_evaluation, evaluation);
+        } else {
+
+            evaluationservices.deleteEvaluation(id_evaluation);
+        }
+
+    }
+
+    @GetMapping("/{id_doctor}/{Decision_admin}")
+    public void DecisionAdmin(@PathVariable String id_doctor, @PathVariable String Decision_admin) {
+        if (Decision_admin=="true"){
+            doctor=doctorServies.getDoctor(id_doctor);
+            doctor.setApproved(true);
+            doctorServies.updateDoctor(id_doctor,doctor);
+        }else{
+            doctorServies.deleteDoctor(id_doctor);
+        }
+    }
+    @GetMapping("/BestDoctor")
+    public void BestDoctor(){
+        List<Doctor> doctorList=doctorServies.getAprovedDoctors(true);
+        int DoctorNumber=doctorList.size();
+        double maxrate=0;
+       Doctor bestdoctor=null;
+        for (Doctor d:doctorList) {
+            if (maxrate<d.getTotal_rate()){
+                maxrate=d.getTotal_rate();
+                bestdoctor=d;
+            }
+        }
+    }
+
 
 }

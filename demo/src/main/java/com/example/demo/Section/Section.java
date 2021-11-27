@@ -26,7 +26,9 @@ public class Section {
     public Section() {
     }
 
-    public Section(long sectionId, String name, Hospital hospital) {
+
+
+    public Section(long sectionId, String name,Hospital hospital) {
         this.sectionId = sectionId;
         this.name = name;
         this.hospitalId = hospital;

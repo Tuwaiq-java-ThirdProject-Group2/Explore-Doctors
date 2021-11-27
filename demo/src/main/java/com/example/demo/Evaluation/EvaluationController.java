@@ -3,7 +3,6 @@ package com.example.demo.Evaluation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,8 +17,10 @@ public class EvaluationController {
     }
 
     @GetMapping
-    private List<Evaluation> gitEvaluaitons() {
-        return evaluationServies.getEvaluaitons();
+
+    private List<Evaluation> gitEvaluaitons ()
+    {
+        return evaluationServies.getEvaluaitons ();
     }
 
     @GetMapping("/{id}")
@@ -29,10 +30,9 @@ public class EvaluationController {
     }
 
     @PostMapping
-    public Evaluation createEvaluation(@RequestBody Evaluation evaluation) {
-        return evaluationServies.createEvaluation(evaluation);
+    public Evaluation createEvaluation(@RequestBody Evaluation evaluation){
+        return evaluationServies. createEvaluation(evaluation);
     }
-
     @DeleteMapping("/{id}")
     public void deleteEvaluation(@PathVariable String id) {
         evaluationServies.deleteEvaluation(id);
@@ -44,3 +44,5 @@ public class EvaluationController {
         evaluationServies.updateEvaluation(id, data);
     }
 }
+
+

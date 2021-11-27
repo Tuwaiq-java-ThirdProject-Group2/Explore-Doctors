@@ -23,7 +23,7 @@ public class AdminService {
         Admin currentAdmin = adminRepository.findById(Admin_id).orElse(null);
         if (currentAdmin != null) {
             currentAdmin.setPassword(a.getPassword());
-            currentAdmin.setUsername(a.getUsername());
+            currentAdmin.setUserName(a.getUserName());
             adminRepository.save(currentAdmin);
         }
         return currentAdmin;
