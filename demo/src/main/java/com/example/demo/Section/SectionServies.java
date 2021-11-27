@@ -1,6 +1,6 @@
 package com.example.demo.Section;
 
-import com.example.demo.Evaluation.Evaluation;
+import com.example.demo.Hospital.Hospital;
 import com.example.demo.Hospital.HospitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +10,13 @@ import java.util.List;
 @Service
 public class SectionServies {
     private final SectionRepository sectionRepository;
-@Autowired
+    private final HospitalRepository hospitalRepository;
 
-    public SectionServies(SectionRepository sectionRepository) {
-       this.sectionRepository= sectionRepository;
+    @Autowired
+
+    public SectionServies(SectionRepository sectionRepository, HospitalRepository hospitalRepository) {
+        this.sectionRepository = sectionRepository;
+        this.hospitalRepository = hospitalRepository;
     }
 
     public List<Section> getSections() {
@@ -25,8 +28,11 @@ public class SectionServies {
         return sectionRepository.findById(section_id).orElse(null);
     }
 
-    public Section createSection(Section section) {
- return sectionRepository.save(section);
+    public Section createSection(Section section, Long id) {
+        Hospital hospital = (Hospital) this.hospitalRepository.findById(id).orElse(null);
+        System.out.println(hospital);
+        section.setHospital(hospital);
+        return (Section) this.sectionRepository.save(section);
     }
 
     public void deleteService(String id) {
@@ -34,9 +40,13 @@ public class SectionServies {
         sectionRepository.deleteById(section_id);
     }
 
+    public void deleteAllService() {
+        sectionRepository.deleteAll();
+    }
+
     public void updateSection(String id, Section data) {
         Long section_id = Long.parseLong(id);
-        Section section =  sectionRepository.findById(section_id).orElse(null);
+        Section section = sectionRepository.findById(section_id).orElse(null);
 
 
         if (section != null) {

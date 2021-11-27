@@ -2,6 +2,7 @@ package com.example.demo.Admin;
 
 
 
+
 import com.example.demo.User.User;
 
 import javax.persistence.*;
@@ -52,5 +53,6 @@ public class Admin {
 
     public void setRole(String role) {
         this.role = role;
+
     }
 }

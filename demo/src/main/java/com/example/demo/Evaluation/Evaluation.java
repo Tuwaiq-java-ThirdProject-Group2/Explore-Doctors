@@ -11,6 +11,7 @@ import java.util.Date;
 @Table(name = "evaluations")
 
 public class Evaluation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long evaluationId;
