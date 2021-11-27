@@ -1,28 +1,46 @@
 package com.example.demo.Evaluation;
 
+import com.example.demo.Doctor.Doctor;
+import com.example.demo.User.User;
+
+
 import javax.persistence.*;
 import java.util.Date;
+
 @Entity
 @Table(name = "evaluations")
+
 public class Evaluation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long  evaluationId ;
+    private Long evaluationId;
     private String comment;
     private String category;
     private Date evaluateDate;
-    private double rate ;
+    private double rate;
     private boolean Aproved;
-    public Evaluation(){
+    @ManyToOne
+    @JoinColumn(name = "doctor")
+    private Doctor doct;
+    @ManyToOne
+    @JoinColumn(name = "user")
+    private User user;
 
+    public Doctor getDoct() {
+        return doct;
     }
-    public Evaluation(Long evaluationId, String comment, String category, Date evaluateDate, double rate, boolean aproved) {
-        this.evaluationId = evaluationId;
-        this.comment = comment;
-        this.category = category;
-        this.evaluateDate = evaluateDate;
-        this.rate = rate;
-        Aproved = aproved;
+
+    public void setTch(Doctor tch) {
+        this.doct = doct;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getEvaluationId() {
@@ -73,3 +91,4 @@ public class Evaluation {
         Aproved = aproved;
     }
 }
+

@@ -4,6 +4,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "specialties")
+
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+
 public class Specialties {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

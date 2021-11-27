@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Repository
- public interface HospitalRepository extends JpaRepository<Hospital,Long> {
+public interface HospitalRepository extends JpaRepository<Hospital, Long> {
 
 }
