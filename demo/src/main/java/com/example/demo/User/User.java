@@ -24,7 +24,8 @@ public class User {
     @JoinColumn(name = "id_admin")
     private Admin admin;
     @OneToMany(mappedBy = "user" ,cascade = CascadeType.ALL,targetEntity = Evaluation.class)
-    Set User= new HashSet();
+//    Set User= new HashSet();
+    Set Evaluation = new HashSet();
 
 
     public long getUserId() {

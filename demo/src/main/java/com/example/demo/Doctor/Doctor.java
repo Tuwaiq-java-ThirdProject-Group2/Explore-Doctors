@@ -19,7 +19,8 @@ public class Doctor {
         private String certificate_name;
         private String certificate_img;
         private Date certificate_date;
-        // CascadeType.ALL
+        // CascadeType.ALL variable
+    // target = table contain forigen key
         @OneToMany(mappedBy = "doct", cascade = CascadeType.ALL, targetEntity = com.example.demo.Evaluation.Evaluation.class)
 
         Set Evaluation = new HashSet();
