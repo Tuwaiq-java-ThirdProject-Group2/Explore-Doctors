@@ -30,13 +30,16 @@ public class EvaluationController {
     }
 
     @PostMapping
-    public Evaluation createEvaluation(@RequestBody Evaluation evaluation){
-        return evaluationServies. createEvaluation(evaluation);
+    public Evaluation createEvaluation(@RequestBody Form form){
+        return evaluationServies. createEvaluation(form.getEvaluation(),form.getDoctorId(),form.getUserId());
     }
     @DeleteMapping("/{id}")
     public void deleteEvaluation(@PathVariable String id) {
         evaluationServies.deleteEvaluation(id);
-
+    }
+    @DeleteMapping("delete/deleteAll")
+    public void deleteAllEvaluation() {
+        evaluationServies.deleteAllEvaluation();
     }
 
     @PutMapping("/{id}")

@@ -1,14 +1,11 @@
 package com.example.demo.Specialties;
 
 import javax.persistence.*;
-
-@Entity
-@Table(name = "specialties")
-
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-
+@Entity
+@Table(name = "specialties")
 public class Specialties {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

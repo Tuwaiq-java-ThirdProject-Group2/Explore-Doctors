@@ -20,11 +20,17 @@ public class Evaluation {
     private Date evaluateDate;
     private double rate;
     private boolean Aproved;
+
     @ManyToOne
-    @JoinColumn(name = "doctor")
+    @JoinColumn(name = "doctor_id")
     private Doctor doct;
+
+    public void setDoct(Doctor doct) {
+        this.doct = doct;
+    }
+
     @ManyToOne
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Doctor getDoct() {

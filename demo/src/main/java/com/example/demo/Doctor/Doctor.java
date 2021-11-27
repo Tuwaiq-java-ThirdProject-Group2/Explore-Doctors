@@ -12,7 +12,7 @@ public class Doctor {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        private long DoctorId;
+        private Long DoctorId;
         private String name;
         private double total_rate;
         private boolean approved;
