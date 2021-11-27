@@ -1,6 +1,8 @@
 package com.example.demo.Doctor;
 
 
+import com.example.demo.Section.Section;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -8,10 +10,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "doctor")
+@SequenceGenerator(name="DocSeq", initialValue=1)
 public class Doctor {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        //@GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="DocSeq")
         private Long DoctorId;
         private String name;
         private double total_rate;
@@ -21,6 +25,32 @@ public class Doctor {
         private Date certificate_date;
         // CascadeType.ALL
         @OneToMany(mappedBy = "doct", cascade = CascadeType.ALL, targetEntity = com.example.demo.Evaluation.Evaluation.class)
+
+        @ManyToOne(
+                fetch = FetchType.EAGER,
+                optional = true
+        )
+        @JoinColumn(
+                name = "sectionId"
+        )
+        private Section sectionId;
+
+        @OneToOne( cascade = CascadeType.ALL,
+               fetch = FetchType.EAGER,
+                optional = true
+        )
+        @JoinColumn(
+                name = "contractId"
+        )
+        private Section contractId;
+
+        @OneToOne(
+                fetch = FetchType.EAGER,
+                optional = true
+        )
+        @JoinColumn(
+                name = "specialtyId"
+        )
 
         Set Evaluation = new HashSet();
 
