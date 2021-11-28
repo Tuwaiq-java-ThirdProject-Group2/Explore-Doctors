@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "sections")
-@SequenceGenerator(name="SecSeq", initialValue=1)
+@SequenceGenerator(name="SecSeq", initialValue=1,allocationSize=100)
 public class Section {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SecSeq")
