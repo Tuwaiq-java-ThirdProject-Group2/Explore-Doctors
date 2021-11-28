@@ -2,6 +2,8 @@ package com.example.demo.Doctor;
 
 import com.example.demo.Section.Section;
 import com.example.demo.Section.SectionRepository;
+import com.example.demo.Specialties.Specialties;
+import com.example.demo.Specialties.SpecialtiesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +15,15 @@ public class DoctorServies {
 
     private final DoctorRepository doctorRepository;
     private final SectionRepository sectionRepository;
+    private final SpecialtiesRepository specialtiesRepository;
 
     @Autowired
-    public DoctorServies(DoctorRepository doctorRepository, SectionRepository sectionRepository) {
+    public DoctorServies(DoctorRepository doctorRepository, SectionRepository sectionRepository, SpecialtiesRepository specialtiesRepository) {
         this.doctorRepository = doctorRepository;
         this.sectionRepository = sectionRepository;
+        this.specialtiesRepository=specialtiesRepository;
     }
+
 
 
     public List<Doctor> getDoctors() {
@@ -34,9 +39,11 @@ public class DoctorServies {
         return doctorRepository.findById(doctor_id).orElse(null);
     }
 
-    public Doctor createDoctor(Doctor doctor, Long sectionId) {
+    public Doctor createDoctor(Doctor doctor, Long sectionId, Long specialtyId) {
         Section section = (Section) sectionRepository.findById(sectionId).orElse(null);
         doctor.setSectionId(section);
+        Specialties Specialties = (Specialties)specialtiesRepository.findById(specialtyId).orElse(null);
+        doctor.setSpecialties(Specialties);
         return doctorRepository.save(doctor);
     }
 

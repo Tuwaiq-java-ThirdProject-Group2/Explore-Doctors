@@ -6,9 +6,12 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @Table(name = "specialties")
+@SequenceGenerator(name="SpeSeq", initialValue=1, allocationSize=100)
 public class Specialties {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SpeSeq")
+
     private long SpecialtyId;
     private String SpecialtyName;
     private String specialtyCode;

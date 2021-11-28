@@ -31,7 +31,7 @@ public class DoctorController {
         @PostMapping
         public  Doctor createDoctor(@RequestBody Form form){
 
-            return doctorServies.createDoctor(form.getDoctor(),form.getSectionId());
+            return doctorServies.createDoctor(form.getDoctor(),form.getSpecialtyId(),form.getSectionId());
         }
         @DeleteMapping("/{id}")
         public void deleteDoctor(@PathVariable String id){

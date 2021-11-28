@@ -2,14 +2,14 @@ package com.example.demo.Doctor;
 
 public class Form {
     private Doctor doctor;
-   // private Long specialtyId;
+    private Long specialtyId;
     private Long sectionId;
    // private Long contractId;
 
 
-    public Form(Doctor doctor, Long specialtyId, Long sectionId, Long contractId) {
+    public Form(Doctor doctor, Long sectionId, Long specialtyId) {
         this.doctor = doctor;
-     //   this.specialtyId = specialtyId;
+        this.specialtyId = specialtyId;
         this.sectionId = sectionId;
         //this.contractId = contractId;
     }
@@ -18,9 +18,9 @@ public class Form {
         return doctor;
     }
 
-//    public Long getSpecialtyId() {
-//        return specialtyId;
-//    }
+    public Long getSpecialtyId() {
+        return specialtyId;
+    }
 
     public Long getSectionId() {
         return sectionId;

@@ -47,7 +47,7 @@ public class Doctor {
             name = "contractId"
     )
     private Section contractId;
-    @ManyToOne(
+    @OneToOne(
             fetch = FetchType.EAGER,
             optional = true
     )
