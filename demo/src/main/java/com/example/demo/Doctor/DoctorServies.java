@@ -1,5 +1,7 @@
 package com.example.demo.Doctor;
 
+import com.example.demo.Contract.Contract;
+import com.example.demo.Contract.ContractRepository;
 import com.example.demo.Section.Section;
 import com.example.demo.Section.SectionRepository;
 import com.example.demo.Specialties.Specialties;
@@ -16,15 +18,15 @@ public class DoctorServies {
     private final DoctorRepository doctorRepository;
     private final SectionRepository sectionRepository;
     private final SpecialtiesRepository specialtiesRepository;
+    private final ContractRepository contractRepository;
 
     @Autowired
-    public DoctorServies(DoctorRepository doctorRepository, SectionRepository sectionRepository, SpecialtiesRepository specialtiesRepository) {
+    public DoctorServies(DoctorRepository doctorRepository, SectionRepository sectionRepository, SpecialtiesRepository specialtiesRepository, ContractRepository contractRepository) {
         this.doctorRepository = doctorRepository;
         this.sectionRepository = sectionRepository;
         this.specialtiesRepository=specialtiesRepository;
+        this.contractRepository = contractRepository;
     }
-
-
 
     public List<Doctor> getDoctors() {
         return doctorRepository.findAll();
@@ -39,11 +41,14 @@ public class DoctorServies {
         return doctorRepository.findById(doctor_id).orElse(null);
     }
 
-    public Doctor createDoctor(Doctor doctor, Long sectionId, Long specialtyId) {
+    public Doctor createDoctor(Doctor doctor, Long sectionId, Long specialtyId, Long contractId) {
         Section section = (Section) sectionRepository.findById(sectionId).orElse(null);
         doctor.setSectionId(section);
         Specialties Specialties = (Specialties)specialtiesRepository.findById(specialtyId).orElse(null);
         doctor.setSpecialties(Specialties);
+        Contract contract= (Contract) contractRepository.findById(contractId).orElse(null);
+        doctor.setContractId(contract);
+
         return doctorRepository.save(doctor);
     }
 
@@ -62,8 +67,6 @@ public class DoctorServies {
             doctor.setCertificate_name(data.getCertificate_name());
             doctor.setCertificate_img(data.getCertificate_img());
             doctor.setCertificate_date(data.getCertificate_date());
-
-
         }
     }
 

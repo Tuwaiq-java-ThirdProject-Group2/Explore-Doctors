@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
-@RequestMapping(path="doctor")
+@RequestMapping(path = "doctor")
 public class DoctorController {
 
-        private final DoctorServies doctorServies;
-        @Autowired
+    private final DoctorServies doctorServies;
+
+    @Autowired
 
     public DoctorController(DoctorServies doctorServies) {
         this.doctorServies = doctorServies;
@@ -42,6 +44,8 @@ public class DoctorController {
         {
             doctorServies. updateDoctor(id,data);
         }
+
     }
+}
 
 
