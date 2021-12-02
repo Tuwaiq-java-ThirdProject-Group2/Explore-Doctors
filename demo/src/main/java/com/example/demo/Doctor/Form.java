@@ -4,14 +4,14 @@ public class Form {
     private Doctor doctor;
     private Long specialtyId;
     private Long sectionId;
-   // private Long contractId;
+    private Long contractId;
 
 
-    public Form(Doctor doctor, Long sectionId, Long specialtyId) {
+    public Form(Doctor doctor, Long sectionId, Long specialtyId, Long contractId) {
         this.doctor = doctor;
         this.specialtyId = specialtyId;
         this.sectionId = sectionId;
-        //this.contractId = contractId;
+        this.contractId = contractId;
     }
 
     public Doctor getDoctor() {
@@ -25,10 +25,9 @@ public class Form {
     public Long getSectionId() {
         return sectionId;
     }
-
-//    public Long getContractId() {
-//        return contractId;
-//    }
+    public Long getContractId() {
+        return contractId;
+    }
 
 
 }

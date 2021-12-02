@@ -1,5 +1,6 @@
 package com.example.demo.Doctor;
 
+import com.example.demo.Contract.Contract;
 import com.example.demo.Section.Section;
 import com.example.demo.Specialties.Specialties;
 
@@ -16,7 +17,7 @@ public class Doctor {
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DocSeq")
-    private Long DoctorId;
+    private long DoctorId;
     private String name;
     private double total_rate;
     private boolean approved;
@@ -36,17 +37,17 @@ public class Doctor {
     @JoinColumn(
             name = "sectionId"
     )
-
     private Section sectionId;
 
-    @OneToOne(cascade = CascadeType.ALL,
+    @OneToOne(//cascade = CascadeType.ALL,
             fetch = FetchType.EAGER,
             optional = true
     )
     @JoinColumn(
             name = "contractId"
     )
-    private Section contractId;
+    private Contract contractId;
+
     @OneToOne(
             fetch = FetchType.EAGER,
             optional = true
@@ -63,7 +64,7 @@ public class Doctor {
 
     public Doctor(Long doctorId, String name, double total_rate, boolean approved,
                   String certificate_name, String certificate_img, Date certificate_date,
-                  Set evaluation, Section sectionId, Section contractId, Specialties specialties) {
+                  Set evaluation, Section sectionId, Contract contractId, Specialties specialties) {
         DoctorId = doctorId;
         this.name = name;
         this.total_rate = total_rate;
@@ -142,7 +143,7 @@ public class Doctor {
         this.sectionId = sectionId;
     }
 
-    public void setContractId(Section contractId) {
+    public void setContractId(Contract contractId) {
         this.contractId = contractId;
     }
 
@@ -158,7 +159,7 @@ public class Doctor {
         return sectionId;
     }
 
-    public Section getContractId() {
+    public Contract getContractId() {
         return contractId;
     }
 
