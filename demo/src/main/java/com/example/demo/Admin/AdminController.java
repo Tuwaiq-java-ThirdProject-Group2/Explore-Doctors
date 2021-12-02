@@ -54,21 +54,21 @@ public class AdminController {
         adminServies.updateAdmin(id, data);
     }
 
-    @GetMapping("/{id_evaluation}/{Decision_comment}")
-    public void DecisionComment(@PathVariable String Decision_comment, @PathVariable String id_evaluation) {
-        if (Decision_comment=="true") {
-            evaluation = evaluationservices.getEvaluaiton(id_evaluation);
-            evaluation.setAproved(true);
-
-           doctorServies.getDoctor(String.valueOf(evaluation.getDoct().getDoctorId())).setTotal_rate(evaluation.getRate() + evaluation.getDoct().getTotal_rate());
-
-            evaluationservices.updateEvaluation(id_evaluation, evaluation);
-        } else {
-
-            evaluationservices.deleteEvaluation(id_evaluation);
-        }
-
-    }
+//    @GetMapping("/{id_evaluation}/{Decision_comment}")
+//    public void DecisionComment(@PathVariable String Decision_comment, @PathVariable String id_evaluation) {
+//        if (Decision_comment=="true") {
+//            evaluation = evaluationservices.getEvaluaiton(id_evaluation);
+//            evaluation.setAproved(true);
+//
+//           doctorServies.getDoctor(String.valueOf(evaluation.getDoct().getDoctorId())).setTotal_rate(evaluation.getRate() + evaluation.getDoct().getTotal_rate());
+//
+//            evaluationservices.updateEvaluation(id_evaluation, evaluation);
+//        } else {
+//
+//            evaluationservices.deleteEvaluation(id_evaluation);
+//        }
+//
+//    }
 
 //    public void updateApprovedDoctor(String id,Boolean b){
 //        System.out.println(b);

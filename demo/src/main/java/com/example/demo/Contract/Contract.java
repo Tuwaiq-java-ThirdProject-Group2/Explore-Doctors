@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "contract")
+@Table(name = "contracts")
 @SequenceGenerator(name="ConSeq", initialValue=1, allocationSize=100)
 public class Contract {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="ConSeq")
-    private long contractId;
+    private Long contractId;
     private Date start_date;
     private Date end_date;
     private String owner;
@@ -17,18 +17,18 @@ public class Contract {
     public Contract(){
 
     }
-    public Contract(long contractId, Date start_date, Date end_date, String owner) {
+    public Contract(Long contractId, Date start_date, Date end_date, String owner) {
         this.contractId = contractId;
         this.start_date = start_date;
         this.end_date = end_date;
         this.owner = owner;
     }
 
-    public long getContractId() {
+    public Long getContractId() {
         return contractId;
     }
 
-    public void setContractId(long contractId) {
+    public void setContractId(Long contractId) {
         contractId = contractId;
     }
 
