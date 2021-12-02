@@ -4,18 +4,14 @@ import com.example.demo.Hospital.Hospital;
 import com.example.demo.Hospital.HospitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 @Service
 public class ContractServies {
     private final ContractRepository contractRepository;
-
     @Autowired
     public ContractServies(ContractRepository contractRepository) {
         this.contractRepository = contractRepository;
     }
-
     public List<Contract> gitContracts() {
         return contractRepository.findAll();
     }
@@ -23,7 +19,6 @@ public class ContractServies {
     public Contract gitContract(String id) {
         Long contract_id = Long.parseLong(id);
         return contractRepository.findById(contract_id).orElse(null);
-
     }
 
     public Contract createContract(Contract contract) {
@@ -46,8 +41,7 @@ public class ContractServies {
             contract.setStart_date(data.getStart_date());
             contract.setEnd_date(data.getEnd_date());
             contract.setOwner(data.getOwner());
-
-
+            //contractRepository.save(con)
         }
     }
 }
