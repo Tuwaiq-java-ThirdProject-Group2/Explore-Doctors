@@ -1,9 +1,7 @@
 package com.example.demo.Admin;
-
-
-
-
 import com.example.demo.User.User;
+import org.hibernate.annotations.SqlFragmentAlias;
+import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -16,9 +14,13 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long AdminId;
+    @Column(
+            name ="UserName"
+    )
     private String userName;
     private int password;
     private String role;
+
     @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL,targetEntity = User.class)
     Set User=new HashSet();
 

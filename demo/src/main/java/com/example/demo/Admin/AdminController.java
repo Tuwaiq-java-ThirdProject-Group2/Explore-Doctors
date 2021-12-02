@@ -6,15 +6,16 @@ import com.example.demo.Evaluation.EvaluationServies;
 import com.example.demo.Doctor.Doctor;
 import com.example.demo.Doctor.DoctorServies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
 import java.util.List;
 
 @RestController
-
 @RequestMapping(path = "admin")
 public class AdminController {
+
     private final AdminServies adminServies;
     private EvaluationServies evaluationservices;
     private DoctorServies doctorServies;
@@ -69,16 +70,31 @@ public class AdminController {
 
     }
 
-    @GetMapping("/{id_doctor}/{Decision_admin}")
-    public void DecisionAdmin(@PathVariable String id_doctor, @PathVariable String Decision_admin) {
-        if (Decision_admin=="true"){
-            doctor=doctorServies.getDoctor(id_doctor);
-            doctor.setApproved(true);
-            doctorServies.updateDoctor(id_doctor,doctor);
-        }else{
-            doctorServies.deleteDoctor(id_doctor);
-        }
-    }
+//    public void updateApprovedDoctor(String id,Boolean b){
+//        System.out.println(b);
+//        Long doctor_id = Long.parseLong(id);
+//        Doctor doctor = doctorRepository.findById(doctor_id).orElse(null);
+//        if (doctor != null) {
+//            System.out.println(b);
+//            doctor.setApproved(b);
+//            System.out.println(doctor.isApproved());
+//            doctorRepository.save(doctor);
+//
+//
+//        }
+//    }
+
+//    @PutMapping("/{id_doctor}/{Decision_admin}")
+//    public void DecisionAdmin(@PathVariable String id_doctor, @PathVariable Boolean Decision_admin) {
+//        if (Decision_admin == true) {
+////            Doctor doctor = doctorServies.getDoctor(id_doctor);
+////            doctor.setApproved(true);
+//            doctorServies.updateApprovedDoctor(id_doctor, Decision_admin);
+////        }else{
+//////            doctorServies.deleteDoctor(id_doctor);
+////        }
+//        }
+//    }
     @GetMapping("/BestDoctor")
     public void BestDoctor(){
         List<Doctor> doctorList=doctorServies.getAprovedDoctors(true);

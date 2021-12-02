@@ -30,7 +30,6 @@ public class SectionServies {
 
     public Section createSection(Section section, Long id) {
         Hospital hospital = (Hospital) this.hospitalRepository.findById(id).orElse(null);
-        System.out.println(hospital);
         section.setHospital(hospital);
         return (Section) this.sectionRepository.save(section);
     }

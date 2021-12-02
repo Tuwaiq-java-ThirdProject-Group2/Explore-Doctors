@@ -2,6 +2,7 @@ package com.example.demo.Evaluation;
 
 import com.example.demo.Doctor.Doctor;
 import com.example.demo.User.User;
+//import org.apache.catalina.User;
 
 
 import javax.persistence.*;
