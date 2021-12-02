@@ -19,31 +19,32 @@ public class DoctorController {
 
 
     @GetMapping
-    public List<Doctor> getDoctors() {
-        return doctorServies.getDoctors();
-    }
+        public List<Doctor> getDoctors ()
+        {
+            return doctorServies.getDoctors ();
+        }
 
+        @GetMapping("/{id}")
+        public Doctor getDoctor(@PathVariable String id){
+            return doctorServies.getDoctor(id);
 
-    @GetMapping("/{id}")
-    public Doctor getDoctor(@PathVariable String id) {
-        return doctorServies.getDoctor(id);
+        }
+        @PostMapping
+        public  Doctor createDoctor(@RequestBody Form form){
 
-    }
+            return doctorServies.createDoctor(form.getDoctor(),form.getSpecialtyId(),form.getSectionId());
+        }
+        @DeleteMapping("/{id}")
+        public void deleteDoctor(@PathVariable String id){
+            doctorServies.deleteDoctor(id);
 
-    @PostMapping
-    public Doctor createDoctor(@RequestBody Form form) {
-        return doctorServies.createDoctor(form.getDoctor(), form.getSpecialtyId(), form.getSectionId(), form.getContractId());
-    }
+        }
+        @PutMapping("/{id}")
+        public void updateDoctor(@PathVariable String id, @RequestBody Doctor data)
+        {
+            doctorServies. updateDoctor(id,data);
+        }
 
-    @DeleteMapping("/{id}")
-    public void deleteDoctor(@PathVariable String id) {
-        doctorServies.deleteDoctor(id);
-
-    }
-
-    @PutMapping("/{id}")
-    public void updateDoctor(@PathVariable String id, @RequestBody Doctor data) {
-        doctorServies.updateDoctor(id, data);
     }
 }
 
