@@ -1,13 +1,15 @@
 package com.example.demo.Hospital;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "hospitals")
-@SequenceGenerator(name="HosSeq", initialValue=1, allocationSize=100)
+@CrossOrigin
 public class Hospital {
     @Id
-     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HosSeq")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long hospitalId;
     private String name;
     private String email;
@@ -19,7 +21,7 @@ public class Hospital {
     public Hospital() {
     }
 
-    public Hospital(long hospitalId, String name, String email, int phone, String address, double langtiude, double lattiude) {
+    public Hospital(Long hospitalId, String name, String email, int phone, String address, double langtiude, double lattiude) {
         this.hospitalId = hospitalId;
         this.name = name;
         this.email = email;
@@ -29,11 +31,11 @@ public class Hospital {
         this.lattiude = lattiude;
     }
 
-    public long getHospitalId() {
+    public Long getHospitalId() {
         return hospitalId;
     }
 
-    public void setHospitalId(long hospitalId) {
+    public void setHospitalId(Long hospitalId) {
         this.hospitalId = hospitalId;
     }
 

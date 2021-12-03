@@ -52,14 +52,12 @@ public class EvaluationController {
         evaluationServies.updateEvaluation(id, data);
     }
 
-//    @PutMapping("/{id_evaluation}/{Decision_comment}")
+    @PutMapping("/{id_evaluation}/{Decision_comment}")
     public void DecisionComment(@PathVariable Boolean Decision_comment, @PathVariable String id_evaluation) {
         if (Decision_comment == true) {
             Evaluation evaluation = evaluationServies.getEvaluaiton(id_evaluation);
             evaluation.setAproved(true);
-
             doctorServies.getDoctor(String.valueOf(evaluation.getDoct().getDoctorId())).setTotal_rate(evaluation.getRate() + evaluation.getDoct().getTotal_rate());
-
             evaluationServies.updateAprrovedEvaluation(id_evaluation, Decision_comment);
         } else {
 
