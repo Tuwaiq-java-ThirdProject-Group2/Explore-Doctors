@@ -27,12 +27,17 @@ public class EvaluationServies {
         return evaluationRepository.findAll();
     }
 
+
+
     public Evaluation getEvaluaiton(String id) {
         Long evaluation_id = Long.parseLong(id);
         return evaluationRepository.findById(evaluation_id).orElse(null);
     }
 
     public Evaluation createEvaluation(Evaluation evaluation,Long docId,Long userId) {
+        System.out.println(evaluation.getEvaluationId());
+        System.out.println(docId);
+        System.out.println(userId);
         Doctor doctor = (Doctor) this.doctorRepository.findById(docId).orElse(null);
         evaluation.setDoct(doctor);
         System.out.println(docId);

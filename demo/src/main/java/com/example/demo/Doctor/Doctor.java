@@ -1,12 +1,15 @@
 package com.example.demo.Doctor;
 
 import com.example.demo.Contract.Contract;
+import com.example.demo.Evaluation.Evaluation;
 import com.example.demo.Section.Section;
 import com.example.demo.Specialties.Specialties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,10 +29,9 @@ public class Doctor {
     private Date certificate_date;
     // CascadeType.ALL variable
     // target = table contain forigen key
+    @JsonIgnore
     @OneToMany()
-
-    Set Evaluation = new HashSet();
-
+    public List<Evaluation> e;
     @ManyToOne(
             fetch = FetchType.EAGER,
             optional = true
@@ -64,7 +66,7 @@ public class Doctor {
 
     public Doctor(Long doctorId, String name, double total_rate, boolean approved,
                   String certificate_name, String certificate_img, Date certificate_date,
-                  Set evaluation, Section sectionId, Contract contractId, Specialties specialties) {
+                  List<Evaluation> e, Section sectionId, Contract contractId, Specialties specialties) {
         DoctorId = doctorId;
         this.name = name;
         this.total_rate = total_rate;
@@ -72,7 +74,7 @@ public class Doctor {
         this.certificate_name = certificate_name;
         this.certificate_img = certificate_img;
         this.certificate_date = certificate_date;
-        Evaluation = evaluation;
+       this.e=e;
         this.sectionId = sectionId;
         this.contractId = contractId;
         this.specialties = specialties;
@@ -135,8 +137,12 @@ public class Doctor {
         this.certificate_date = certificate_date;
     }
 
-    public void setEvaluation(Set evaluation) {
-        Evaluation = evaluation;
+    public List<Evaluation> getE() {
+        return e;
+    }
+
+    public void setE(List<Evaluation> e) {
+        this.e = e;
     }
 
     public void setSectionId(Section sectionId) {
@@ -151,9 +157,6 @@ public class Doctor {
         this.specialties = specialties;
     }
 
-    public Set getEvaluation() {
-        return Evaluation;
-    }
 
     public Section getSectionId() {
         return sectionId;

@@ -21,11 +21,10 @@ public class Evaluation {
     private Date evaluateDate;
     private double rate;
     private boolean Aproved;
-//@ManyToOne(mappedBy="evaluation ")
-    @ManyToOne
-    @JoinColumn(name = "doctor_id")
+@ManyToOne(fetch = FetchType.EAGER)
+//    @ManyToOne
+//    @JoinColumn(name = "doctor_id")
     private Doctor doct;
-
     public void setDoct(Doctor doct) {
         this.doct = doct;
     }
