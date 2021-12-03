@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="user")
-@CrossOrigin
+@CrossOrigin("*")
 public class UserController {
     private final UserServies userServies;
     @Autowired

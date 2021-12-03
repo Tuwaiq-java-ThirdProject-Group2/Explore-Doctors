@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "hospital")
+@CrossOrigin("*")
 public class HospitalController {
     private final HospitalServies hospitalServies;
 
