@@ -2,6 +2,8 @@ package com.example.demo.Doctor;
 
 import com.example.demo.Contract.Contract;
 import com.example.demo.Contract.ContractRepository;
+import com.example.demo.Evaluation.Evaluation;
+import com.example.demo.Evaluation.EvaluationRepository;
 import com.example.demo.Section.Section;
 import com.example.demo.Section.SectionRepository;
 import com.example.demo.Specialties.Specialties;
@@ -19,13 +21,15 @@ public class DoctorServies {
     private final SectionRepository sectionRepository;
     private final SpecialtiesRepository specialtiesRepository;
     private final ContractRepository contractRepository;
+    private final EvaluationRepository evaluationRepository;
 
     @Autowired
-    public DoctorServies(DoctorRepository doctorRepository, SectionRepository sectionRepository, SpecialtiesRepository specialtiesRepository, ContractRepository contractRepository) {
+    public DoctorServies(DoctorRepository doctorRepository, SectionRepository sectionRepository, SpecialtiesRepository specialtiesRepository, ContractRepository contractRepository, EvaluationRepository evaluationRepository) {
         this.doctorRepository = doctorRepository;
         this.sectionRepository = sectionRepository;
         this.specialtiesRepository=specialtiesRepository;
         this.contractRepository = contractRepository;
+        this.evaluationRepository = evaluationRepository;
     }
 
     public List<Doctor> getDoctors() {
@@ -45,6 +49,7 @@ public class DoctorServies {
         Section section = (Section) sectionRepository.findById(sectionId).orElse(null);
         doctor.setSectionId(section);
         Specialties Specialties = (Specialties)specialtiesRepository.findById(specialtyId).orElse(null);
+        System.out.println(Specialties.getSpecialtiesId());
         doctor.setSpecialties(Specialties);
         Contract contract= (Contract) contractRepository.findById(contractId).orElse(null);
         doctor.setContractId(contract);
@@ -69,7 +74,20 @@ public class DoctorServies {
             doctor.setCertificate_date(data.getCertificate_date());
         }
     }
+//    Change doctor status to true
+    public void updateApprovedDoctor(String id,Boolean b){
+        System.out.println(b);
+        Long doctor_id = Long.parseLong(id);
+        Doctor doctor = doctorRepository.findById(doctor_id).orElse(null);
+        if (doctor != null) {
+            System.out.println(b);
+            doctor.setApproved(b);
+            System.out.println(doctor.isApproved());
+            doctorRepository.save(doctor);
 
+
+        }
+    }
 
 }
 

@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="user")
+@CrossOrigin
 public class UserController {
     private final UserServies userServies;
     @Autowired
@@ -20,6 +21,11 @@ public class UserController {
     private List<User> getUsers ()
     {
         return userServies.getUsers ();
+    }
+    @GetMapping("numbersofuser")
+    private int getNumberOfUsers ()
+    {
+        return userServies.getUsers().size();
     }
 
     @GetMapping("/{id}")
