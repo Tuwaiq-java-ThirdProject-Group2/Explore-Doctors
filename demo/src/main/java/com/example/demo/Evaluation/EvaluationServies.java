@@ -69,4 +69,18 @@ public class EvaluationServies {
     public void deleteAllEvaluation() {
         evaluationRepository.deleteAll();
     }
-}
+
+    public void updateAprrovedEvaluation(String id,Boolean aprove) {
+
+        Long evaluation_id = Long.parseLong(id);
+        Evaluation evaluation = evaluationRepository.findById(evaluation_id).orElse(null);
+        if (evaluation != null) {
+
+            evaluation.setAproved(aprove);
+
+            evaluationRepository.save(evaluation);
+
+            }
+        }
+
+    }
