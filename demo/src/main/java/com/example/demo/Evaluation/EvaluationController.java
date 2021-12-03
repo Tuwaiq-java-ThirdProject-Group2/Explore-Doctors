@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "evaluation")
-
+@CrossOrigin("*")
 public class EvaluationController {
     private final EvaluationServies evaluationServies;
     private DoctorServies doctorServies;

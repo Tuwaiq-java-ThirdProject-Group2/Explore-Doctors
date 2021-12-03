@@ -9,6 +9,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "contract")
+@CrossOrigin("*")
+
 public class ContractController {
     private final ContractServies contractServies;
 

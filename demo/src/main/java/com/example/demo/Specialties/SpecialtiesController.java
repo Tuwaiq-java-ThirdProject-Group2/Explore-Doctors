@@ -1,5 +1,6 @@
 package com.example.demo.Specialties;
 
+import com.example.demo.Doctor.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "specialties")
+@CrossOrigin("*")
 public class SpecialtiesController {
     private SpecialtiesServies specialtiesServies;
 
@@ -38,5 +40,10 @@ public class SpecialtiesController {
     @PutMapping("/{id}")
     public void updateSpecialties(@PathVariable String id, @RequestBody Specialties data) {
         specialtiesServies.updateSpecialties(id, data);
+    }
+    @GetMapping("findBySpecialties/{Specialties}")
+    public List<Doctor> findDoctorBySpecialties(@PathVariable String Specialties){
+        System.out.println(Specialties);
+        return specialtiesServies.findDoctorBySpecialties( Specialties);
     }
 }
