@@ -21,6 +21,7 @@ public class UserServies {
     }
     public User getUser(String id) {
         Long user_id= Long.parseLong(id);
+//        System.out.println(getUser("1"));
         return userRepository.findById(user_id).orElse(null);
     }
     public User createUser(User user) {

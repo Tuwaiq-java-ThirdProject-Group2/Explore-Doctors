@@ -27,6 +27,11 @@ public class HospitalController {
         return hospitalServies.getHospital(id);
 
     }
+    @GetMapping("numbersOfHospitals")
+    private int getNumberOfHospitals ()
+    {
+        return hospitalServies.getHospitals().size();
+    }
 
     @PostMapping
     public Hospital createHospital(@RequestBody Hospital hospital) {
