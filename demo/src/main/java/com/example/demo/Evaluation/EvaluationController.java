@@ -1,5 +1,8 @@
 package com.example.demo.Evaluation;
 
+
+import com.example.demo.Doctor.Doctor;
+import com.example.demo.Doctor.DoctorServies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +13,8 @@ import java.util.List;
 
 public class EvaluationController {
     private final EvaluationServies evaluationServies;
+    private DoctorServies doctorServies;
+    private Doctor doctor;
 
     @Autowired
     public EvaluationController(EvaluationServies evaluationServies) {
@@ -45,6 +50,22 @@ public class EvaluationController {
     @PutMapping("/{id}")
     public void updateEvaluation(@PathVariable String id, @RequestBody Evaluation data) {
         evaluationServies.updateEvaluation(id, data);
+    }
+
+//    @PutMapping("/{id_evaluation}/{Decision_comment}")
+    public void DecisionComment(@PathVariable Boolean Decision_comment, @PathVariable String id_evaluation) {
+        if (Decision_comment == true) {
+            Evaluation evaluation = evaluationServies.getEvaluaiton(id_evaluation);
+            evaluation.setAproved(true);
+
+            doctorServies.getDoctor(String.valueOf(evaluation.getDoct().getDoctorId())).setTotal_rate(evaluation.getRate() + evaluation.getDoct().getTotal_rate());
+
+            evaluationServies.updateAprrovedEvaluation(id_evaluation, Decision_comment);
+        } else {
+
+            evaluationServies.deleteEvaluation(id_evaluation);
+        }
+
     }
 }
 
