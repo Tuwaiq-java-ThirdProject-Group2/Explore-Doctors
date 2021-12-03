@@ -44,6 +44,6 @@ public class SpecialtiesController {
     @GetMapping("findBySpecialties/{Specialties}")
     public List<Doctor> findDoctorBySpecialties(@PathVariable String Specialties){
         System.out.println(Specialties);
-        return specialtiesServies.findDoctorBySpecialties( Specialties);
+        return specialtiesServies.findDoctorBySpecialties(Specialties);
     }
 }
