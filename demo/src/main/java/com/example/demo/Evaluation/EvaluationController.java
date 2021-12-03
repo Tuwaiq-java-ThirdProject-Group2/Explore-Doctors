@@ -57,7 +57,7 @@ public class EvaluationController {
         if (Decision_comment == true) {
             Evaluation evaluation = evaluationServies.getEvaluaiton(id_evaluation);
             evaluation.setAproved(true);
-            doctorServies.getDoctor(String.valueOf(evaluation.getDoct().getDoctorId())).setTotal_rate(evaluation.getRate() + evaluation.getDoct().getTotal_rate());
+//            doctorServies.getDoctor(String.valueOf(evaluation.getDoct().getDoctorId())).setTotal_rate(evaluation.getRate() + evaluation.getDoct().getTotal_rate());
             evaluationServies.updateAprrovedEvaluation(id_evaluation, Decision_comment);
         } else {
 

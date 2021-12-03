@@ -1,10 +1,12 @@
 package com.example.demo.Hospital;
 
+import com.example.demo.Doctor.Doctor;
 import com.example.demo.Evaluation.Evaluation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -61,4 +63,6 @@ public class HospitalServies {
         System.out.println(h.getLangtiude());
         return location;
     }
+
+
 }
