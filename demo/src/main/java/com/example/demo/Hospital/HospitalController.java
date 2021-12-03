@@ -30,6 +30,7 @@ public class HospitalController {
 
     @PostMapping
     public Hospital createHospital(@RequestBody Hospital hospital) {
+        System.out.println(hospital.getHospitalId());
         return hospitalServies.createHospital(hospital);
     }
 
