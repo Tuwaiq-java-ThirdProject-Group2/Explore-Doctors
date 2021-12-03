@@ -7,6 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "doctor")
+@CrossOrigin("*")
 public class DoctorController {
 
     private final DoctorServies doctorServies;
@@ -30,6 +31,8 @@ public class DoctorController {
 
         }
         @PostMapping
+
+
         public  Doctor createDoctor(@RequestBody Form form){
             return doctorServies.createDoctor(form.getDoctor(),form.getSpecialtyId(),form.getSectionId(), form.getContractId());
         }
