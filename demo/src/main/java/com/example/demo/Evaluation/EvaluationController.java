@@ -39,6 +39,7 @@ public class EvaluationController {
 
     }
 
+
     @GetMapping("AllRate/{id}")
     public List<Integer> getAllRateByDocID(@PathVariable String id) {
         return evaluationServies.getAllRateByDocID(id);
