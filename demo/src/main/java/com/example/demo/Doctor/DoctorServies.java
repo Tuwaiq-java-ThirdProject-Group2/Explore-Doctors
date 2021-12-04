@@ -39,6 +39,9 @@ public class DoctorServies {
     public List<Doctor> getAprovedDoctors(Boolean status) {
         return doctorRepository.getAllByApproved(status);
     }
+    public List<Doctor> getAllByName(String name) {
+        return doctorRepository.getAllByName(name);
+    }
 
     public Doctor getDoctor(String id) {
         Long doctor_id = Long.parseLong(id);
