@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EvaluationRepository extends JpaRepository<Evaluation,Long> {
-
+//@Query(value="SELECT AVG(rate), DOCTORID FROM  EVALUATIONS  JOIN DOCTOR  ON EVALUATIONS.DOCTORID
 //    @Query(value = "SELECT * FROM USERS WHERE EMAIL_ADDRESS = ?1", nativeQuery = true)
 //    User findByEmailAddress(String emailAddress);
 }
