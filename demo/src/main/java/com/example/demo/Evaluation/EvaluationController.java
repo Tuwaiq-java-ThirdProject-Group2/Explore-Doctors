@@ -33,6 +33,11 @@ public class EvaluationController {
         return evaluationServies.getEvaluaiton(id);
 
     }
+    @GetMapping("AllComment/{id}")
+    public List<String> getAllCommentByDocID(@PathVariable String id) {
+        return evaluationServies.getAllCommentBtDocId(id);
+
+    }
 
     @PostMapping
     public Evaluation createEvaluation(@RequestBody Form form){

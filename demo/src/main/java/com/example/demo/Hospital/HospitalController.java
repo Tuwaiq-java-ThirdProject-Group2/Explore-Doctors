@@ -30,6 +30,7 @@ public class HospitalController {
     @GetMapping("numbersOfHospitals")
     private int getNumberOfHospitals ()
     {
+        System.out.println(hospitalServies.getHospitals().size());
         return hospitalServies.getHospitals().size();
     }
 
