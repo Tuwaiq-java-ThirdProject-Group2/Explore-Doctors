@@ -39,6 +39,12 @@ public class EvaluationController {
 
     }
 
+    @GetMapping("AllRate/{id}")
+    public List<Integer> getAllRateByDocID(@PathVariable String id) {
+        return evaluationServies.getAllRateByDocID(id);
+
+    }
+
     @PostMapping
     public Evaluation createEvaluation(@RequestBody Form form){
         return evaluationServies. createEvaluation(form.getEvaluation(),form.getDoctorId(),form.getUserId());
