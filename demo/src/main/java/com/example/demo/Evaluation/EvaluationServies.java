@@ -29,13 +29,12 @@ public class EvaluationServies {
     }
 
 
-
     public Evaluation getEvaluaiton(String id) {
         Long evaluation_id = Long.parseLong(id);
         return evaluationRepository.findById(evaluation_id).orElse(null);
     }
 
-    public Evaluation createEvaluation(Evaluation evaluation,Long docId,Long userId) {
+    public Evaluation createEvaluation(Evaluation evaluation, Long docId, Long userId) {
         System.out.println(evaluation.getEvaluationId());
         System.out.println(docId);
         System.out.println(userId);
@@ -76,7 +75,7 @@ public class EvaluationServies {
         evaluationRepository.deleteAll();
     }
 
-    public void updateAprrovedEvaluation(String id,Boolean aprove) {
+    public void updateAprrovedEvaluation(String id, Boolean aprove) {
 
         Long evaluation_id = Long.parseLong(id);
         Evaluation evaluation = evaluationRepository.findById(evaluation_id).orElse(null);
@@ -86,19 +85,40 @@ public class EvaluationServies {
 
             evaluationRepository.save(evaluation);
 
-            }
-        }
-public List<String> getAllCommentBtDocId(String id){
-    Long doct_id = Long.parseLong(id);
-    List<Evaluation> evaluation = evaluationRepository.findAll();
-    List<String> comment = new ArrayList<>();
-    for(Evaluation temp:evaluation){
-        if (temp.getDoct()!=null){
-            if(temp.getDoct().getDoctorId()==doct_id){
-                comment.add(temp.getComment());
-            }
         }
     }
+
+    public List<String> getAllCommentBtDocId(String id) {
+        Long doct_id = Long.parseLong(id);
+        List<Evaluation> evaluation = evaluationRepository.findAll();
+        List<String> comment = new ArrayList<>();
+        for (Evaluation temp : evaluation) {
+            if (temp.getDoct() != null) {
+                if (temp.getDoct().getDoctorId() == doct_id) {
+                    comment.add(temp.getComment());
+                }
+            }
+        }
         return comment;
-}
     }
+
+
+    public List<Integer> getAllRateByDocID(String id) {
+        Long doct_id = Long.parseLong(id);
+        List<Evaluation> evaluation = evaluationRepository.findAll();
+        List<Integer> rate = new ArrayList<>();
+        for (Evaluation temp : evaluation) {
+            if (temp.getDoct() != null) {
+                if (temp.getDoct().getDoctorId() == doct_id) {
+                    rate.add((int) temp.getRate());
+                }
+            }
+        }
+        return rate;
+
+
+    }
+}
+
+
+
