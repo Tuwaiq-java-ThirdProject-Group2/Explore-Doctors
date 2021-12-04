@@ -37,7 +37,7 @@ public class DoctorController {
 
     @PostMapping
     public Doctor createDoctor(@RequestBody Form form) {
-        System.out.println(form.getDoctor());
+        System.out.println(form.getDoctor().getDoctorId());
         System.out.println(form.getContractId());
         System.out.println(form.getSectionId());
         System.out.println(form.getSpecialtyId());
@@ -66,6 +66,10 @@ public class DoctorController {
         }
     }
 
+@GetMapping("name/{name}")
+    public List<Doctor> getAllDoctorByName(@PathVariable String name){
+        return doctorServies.getAllByName(name);
+}
 }
 
 

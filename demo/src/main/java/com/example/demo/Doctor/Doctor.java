@@ -19,8 +19,8 @@ public class Doctor {
 
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DocSeq")
-    private long DoctorId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long doctorId;
     private String name;
     private double total_rate;
     private boolean approved;
@@ -67,7 +67,7 @@ public class Doctor {
     public Doctor(Long doctorId, String name, double total_rate, boolean approved,
                   String certificate_name, String certificate_img, Date certificate_date,
                   List<Evaluation> e, Section sectionId, Contract contractId, Specialties specialties) {
-        DoctorId = doctorId;
+        this.doctorId = doctorId;
         this.name = name;
         this.total_rate = total_rate;
         this.approved = approved;
@@ -81,12 +81,12 @@ public class Doctor {
     }
 
 
-    public long getDoctorId() {
-        return DoctorId;
+    public Long getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctorId(long doctorId) {
-        this.DoctorId = doctorId;
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 
     public String getName() {

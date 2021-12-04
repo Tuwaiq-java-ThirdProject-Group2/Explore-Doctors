@@ -53,10 +53,8 @@ public class SpecialtiesServies {
         System.out.println(doctorList.size());
         List<Doctor> doctorListBySpecialties = new ArrayList<>();
         for (Doctor t : doctorList) {
-
-
             if (t.getSpecialties() != null) {
-                System.out.println("inside " +t.getSpecialties().getSpecialtyName());
+                System.out.println("inside " + t.getSpecialties().getSpecialtyName());
                 if (t.getSpecialties().getSpecialtyName().equalsIgnoreCase(Specialties)) {
                     doctorListBySpecialties.add(t);
                 }

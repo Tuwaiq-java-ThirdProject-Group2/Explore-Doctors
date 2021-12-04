@@ -7,6 +7,7 @@ import com.example.demo.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -87,5 +88,17 @@ public class EvaluationServies {
 
             }
         }
-
+public List<String> getAllCommentBtDocId(String id){
+    Long doct_id = Long.parseLong(id);
+    List<Evaluation> evaluation = evaluationRepository.findAll();
+    List<String> comment = new ArrayList<>();
+    for(Evaluation temp:evaluation){
+        if (temp.getDoct()!=null){
+            if(temp.getDoct().getDoctorId()==doct_id){
+                comment.add(temp.getComment());
+            }
+        }
+    }
+        return comment;
+}
     }
