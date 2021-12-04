@@ -1,5 +1,7 @@
 package com.example.demo.Doctor;
-
+import com.example.demo.Evaluation.Evaluation;
+import com.example.demo.Evaluation.EvaluationController;
+import com.example.demo.Evaluation.EvaluationServies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
