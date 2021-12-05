@@ -169,6 +169,9 @@ public class Doctor {
     public Specialties getSpecialties() {
         return specialties;
     }
+
+
+
 }
 
 

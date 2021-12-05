@@ -118,6 +118,14 @@ public class EvaluationServies {
 
 
     }
+
+
+//    public List<Evaluation> getAllByRate(double rate) {
+//       return evaluationRepository.getAllByRate(rate);
+////    }
+
+
+
 }
 
 
