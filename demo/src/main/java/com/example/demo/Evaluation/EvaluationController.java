@@ -39,40 +39,23 @@ public class EvaluationController {
 
     }
 
-    @GetMapping("AllRate/{id}")
-    public List<Integer> getAllRateByDocID(@PathVariable String id) {
-//        System.out.println(evaluationServies.getAllRateByDocID(id));
-        return evaluationServies.getAllRateByDocID(id);
 
-    }
     @Autowired
     private EvaluationRepository evaluationRepository;
 
 
 
 
-    @GetMapping("AllRate  ")
 
-    public String  getAllByRate(){
+    @GetMapping("test/{doctId}")
 
-        int summ =0;
-        int count =0;
-        for( Evaluation ev :  evaluationRepository.findAll() ){
-            summ += ev.getRate();
-            count ++;
-        }
-
-        int Avreage = summ/count ;
-
-
-        return "Avreage == " + Integer.toString(Avreage);
+    public double getAllByRate(@PathVariable String doctId){
+        System.out.println(doctId);
+       return evaluationServies.getAllRateByDocID(doctId);
 
     }
 
-//    @GetMapping("allr")
-//    public List <Evaluation> getallr( @RequestBody double rate){
-//        return evaluationServies.getAllByRate(rate);
-//    }
+
 
     @PostMapping
     public Evaluation createEvaluation(@RequestBody Form form){
