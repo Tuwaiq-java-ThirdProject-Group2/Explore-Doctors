@@ -95,5 +95,14 @@ public class Evaluation {
     public void setAproved(boolean aproved) {
         Aproved = aproved;
     }
+
+    @Override
+    public String toString() {
+        return "Evaluation{" +
+
+                ", rate=" + rate +
+
+                '}';
+    }
 }
 

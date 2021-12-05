@@ -40,11 +40,23 @@ public class EvaluationController {
     }
 
 
-    @GetMapping("AllRate/{id}")
-    public List<Integer> getAllRateByDocID(@PathVariable String id) {
-        return evaluationServies.getAllRateByDocID(id);
+
+    @Autowired
+    private EvaluationRepository evaluationRepository;
+
+
+
+
+
+    @GetMapping("test/{doctId}")
+
+    public double getAllByRate(@PathVariable String doctId){
+        System.out.println(doctId);
+       return evaluationServies.getAllRateByDocID(doctId);
 
     }
+
+
 
     @PostMapping
     public Evaluation createEvaluation(@RequestBody Form form){
