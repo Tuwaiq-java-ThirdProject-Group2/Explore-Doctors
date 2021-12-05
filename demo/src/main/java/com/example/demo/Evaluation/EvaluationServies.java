@@ -103,18 +103,29 @@ public class EvaluationServies {
     }
 
 
-    public List<Integer> getAllRateByDocID(String id) {
+    public double getAllRateByDocID(String id) {
+        double sum=0;
         Long doct_id = Long.parseLong(id);
+        System.out.println(doct_id);
         List<Evaluation> evaluation = evaluationRepository.findAll();
+        System.out.println(evaluation);
         List<Integer> rate = new ArrayList<>();
         for (Evaluation temp : evaluation) {
             if (temp.getDoct() != null) {
                 if (temp.getDoct().getDoctorId() == doct_id) {
-                    rate.add((int) temp.getRate());
+                    rate.add((int)temp.getRate());
+                    System.out.println(rate);
+
                 }
             }
+            System.out.println("not found");
+
         }
-        return rate;
+        for (int i = 0; i < rate.size(); i++) {
+            sum+=rate.get(i);
+        }
+
+        return sum/rate.size();
 
 
     }
