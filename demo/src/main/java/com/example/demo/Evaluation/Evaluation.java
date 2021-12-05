@@ -22,8 +22,7 @@ public class Evaluation {
     private double rate;
     private boolean Aproved;
 @ManyToOne(fetch = FetchType.EAGER)
-//    @ManyToOne
-//    @JoinColumn(name = "doctor_id")
+
     private Doctor doct;
     public void setDoct(Doctor doct) {
         this.doct = doct;
