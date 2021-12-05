@@ -1,6 +1,7 @@
 package com.example.demo.Doctor;
 import com.example.demo.Evaluation.Evaluation;
 import com.example.demo.Evaluation.EvaluationController;
+import com.example.demo.Evaluation.EvaluationRepository;
 import com.example.demo.Evaluation.EvaluationServies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -54,6 +55,8 @@ public class DoctorController {
     public void updateDoctor(@PathVariable String id, @RequestBody Doctor data) {
         doctorServies.updateDoctor(id, data);
     }
+
+
 
     @PutMapping("/{id_doctor}/{Decision_admin}")
     public void DecisionAdmin(@PathVariable String id_doctor, @PathVariable Boolean Decision_admin) {
